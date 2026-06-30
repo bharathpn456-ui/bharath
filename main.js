@@ -1,3 +1,63 @@
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    let count = 5;
+
+    const number = document.getElementById("countNumber");
+
+    const page = document.getElementById("countdownPage");
+
+    const startBtn = document.getElementById("start-btn-container");
+
+    const timer = setInterval(()=>{
+
+        count--;
+
+        if(count>0){
+
+            number.innerHTML = count;
+
+            confetti({
+                particleCount:80,
+                spread:100,
+                origin:{y:0.6}
+            });
+
+        }else{
+
+            number.innerHTML="🎂";
+
+            confetti({
+                particleCount:300,
+                spread:180,
+                origin:{y:0.6}
+            });
+
+            clearInterval(timer);
+
+            setTimeout(()=>{
+
+                page.style.opacity="0";
+                page.style.transition="1s";
+
+                setTimeout(()=>{
+
+                    page.style.display="none";
+
+                    startBtn.style.display="flex";
+
+                },1000);
+
+            },1000);
+
+        }
+
+    },1000);
+
+});
+
+</script>
 let w = (c.width = window.innerWidth),
   h = (c.height = window.innerHeight),
   ctx = c.getContext("2d"),
